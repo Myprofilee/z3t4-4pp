@@ -28,7 +28,7 @@ import { getID } from "../../../data/js/authState.js";
             container.appendChild(element);
 
             const back = element.querySelector('#back-dashboard');
-            back.onclick = () => window.history.back();
+            back.onclick = () => window.history.go(-1);
         },
         main() {
 

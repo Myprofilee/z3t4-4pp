@@ -30,51 +30,40 @@ import { getID } from "../../data/js/authState.js";
                 </div>
             </div>
             <div class="menu-bar">
-                <!-- Global --
                 <button id="changeGlobal"><i class="fa-regular fa-globe"></i></button>
-                <!-- Global -->
-
                 <button id="changeChat"><i class="fa-duotone fa-comments"></i> ${lang.chats}</button>
-                
+
                 <!-- Random --
                 <button id="changeRandom"><i class="fa-duotone fa-shuffle"></i> ${lang.random}</button>
                 <!-- Random -->
 
                 <button id="changeGroup"><i class="fa-duotone fa-users"></i> ${lang.groups}</button>
-                
-                <!-- Post --
                 <button id="changePost"><i class="fa-duotone fa-images"></i> ${lang.posts}</button>
-                <!-- Post -->
             </div>
         `);
-        /* Global *
-        const btnGlobal = header.querySelector('#changeGlobal');
-        /* Global */
 
+        const btnGlobal = header.querySelector('#changeGlobal');
         const btnChat = header.querySelector('#changeChat');
 
         /* Random *
         const btnRandom = header.querySelector('#changeRandom');
         /* Random */
-        const btnGroup = header.querySelector('#changeGroup');
 
-        /* Post *
+        const btnGroup = header.querySelector('#changeGroup');
         const btnPost = header.querySelector('#changePost');
-        /* Post */
 
         const icSetting = header.querySelector('#icon-setting');
         const icSearch = header.querySelector('#icon-search');
 
-        /* Global *
         btnGlobal.onclick = () => {
             window.location.href = `${window.location.origin}/chat/?r=global`;
         }
-        /* Global */
-        
+
         btnChat.onclick = () => {
             if(btnChat.getAttribute('class') == 'enabled') return;
             changePage(prevMain, prevFooter, chatPage, btnChat);
         }
+
         /* Random *
         btnRandom.onclick = () => {
             if(btnRandom.getAttribute('class') == 'enabled') return;
@@ -87,12 +76,10 @@ import { getID } from "../../data/js/authState.js";
             changePage(prevMain, prevFooter, groupPage, btnGroup);
         }
 
-        /* Post *
         btnPost.onclick = () => {
             if(btnPost.getAttribute('class') == 'enabled') return;
             changePage(prevMain, prevFooter, postPage, btnPost);
         }
-        /* Post */
         
         icSetting.onclick = () => window.location.href = window.location.origin + '/user/setting/';
         icSearch.onclick = () => popup.prompt({

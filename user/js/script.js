@@ -48,7 +48,7 @@ import { getID } from "../../../data/js/authState.js";
             container.appendChild(element);
 
             const back = element.querySelector('#back-dashboard');
-            back.onclick = () => window.history.back();
+            back.onclick = () => window.history.go(-1);
         },
         main(s, id) {
 
@@ -134,26 +134,26 @@ import { getID } from "../../../data/js/authState.js";
             // User-link
             const uLink = element.querySelector(`.User-link`);
             const socialLinks = () => {
-                if(s.github) {
+                if(s.instagram) {
                     const sc = document.createElement('button');
                     sc.classList.add('action');
                     sc.innerHTML = `<i class="fa-brands fa-github c-white"></i> GitHub`;
-                    sc.onclick = () => window.open(`https://www.instagram.com/${s.github}`);
+                    sc.onclick = () => window.open(`https://www.instagram.com/${s.instagram}`);
                     uLink.append(sc);
                 }
-                if(s.youtube) {
+                if(s.website) {
                     const sc = document.createElement('button');
                     sc.classList.add('action');
                     sc.innerHTML = `<i class="fa-brands fa-youtube c-red"></i> Youtube`;
-                    sc.onclick = () => window.open(`https://www.youtube.com/channel/${s.youtube}`);
+                    sc.onclick = () => window.open(`${s.website}`);
                     uLink.append(sc);
                 }
                 
-                if(s.twitter) {
+                if(s.tiktok) {
                     const sc = document.createElement('button');
                     sc.classList.add('action');
-                    sc.innerHTML = `<i class="fa-brands fa-twitter c-blue"></i> Twitter`;
-                    sc.onclick = () => window.open(`https://twitter.com/${s.twitter}`);
+                    sc.innerHTML = `<i class="fa-brands fa-twitter c-blue"></i> TikTok`;
+                    sc.onclick = () => window.open(`https://www.tiktok.com/${s.tiktok}`);
                     uLink.append(sc);
                 }
             }

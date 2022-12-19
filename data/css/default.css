@@ -24,6 +24,11 @@
     font-style: italic;
 }
 
+:root {
+    touch-action: pan-x pan-y;
+    height: 100% 
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -70,6 +75,7 @@ body.dark {
     background-color: #272b30;
     color: #ffffff;
 }
+
 :root {
     --c-red: #a85a5a;
     --c-green: #468b31;

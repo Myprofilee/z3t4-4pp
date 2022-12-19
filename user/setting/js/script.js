@@ -24,7 +24,7 @@ import { getID } from "../../../data/js/authState.js";
             element.innerHTML = (`<button id="back-dashboard"><i class="fa-solid fa-arrow-left"></i></button>${lang.setting}`);
             container.appendChild(element);
 
-            element.querySelector('#back-dashboard').onclick = () => window.history.back();
+            element.querySelector('#back-dashboard').onclick = () => window.history.go(-1);
         },
         accountSect(user) {
             const element = document.createElement('section');
@@ -57,9 +57,9 @@ import { getID } from "../../../data/js/authState.js";
                 <div class="box" data-edit="link">
                     <i>${lang.social}:</i>
                     <div class="group">
-                        <button class="social" data-social="github"><i class="fa-brands fa-instagram"></i> <span id="github-social">Not Linked</span></button>
-                        <button class="social" data-social="youtube"><i class="fa-brands fa-site c-red"></i> <span id="youtube-social">Not Linked</span></button>
-                        <button class="social" data-social="twitter"><i class="fa-brands fa-twitter c-blue"></i> <span id="twitter-social">Not Linked</span></button>
+                        <button class="social" data-social="instagram"><i class="fa-brands fa-instagram" style="color:white;"></i> <span id="instagram-social">Not Linked</span></button>
+                        <button class="social" data-social="website"><i class="fa-light fa-globe" style="color:white;"></i> <span id="website-social">Not Linked</span></button>
+                        <button class="social" data-social="tiktok"><i class="fa-brands fa-tiktok" style="color:white;"></i> <span id="tiktok-social">Not Linked</span></button>
                     </div>
                 </div>
                 <div class="box">
@@ -69,12 +69,16 @@ import { getID } from "../../../data/js/authState.js";
                         <p id="email-sharp">--------------------</p>
                         <i class="fa-light fa-eye" id="email-toggle"></i>
                     </div>
+
+                    <!-- UID --
                     <i>Private ID:</i>
+
                     <div class="secret">
                         <p id="uid-real" class="disabled">${user.uid}</p>
                         <p id="uid-sharp">--------------------</p>
                         <i class="fa-light fa-eye" id="uid-toggle"></i>
                     </div>
+                    <!-- UID -->
                     <p class="s-font c-yellow"><i>${lang.only_you}</i></p>
                 </div>
                 <div class="br"></div>
@@ -98,6 +102,8 @@ import { getID } from "../../../data/js/authState.js";
                     emailToggle.classList.add('fa-eye');
                 }
             }
+
+            /* UID
             const uidToggle = element.querySelector(`#uid-toggle`);
             uidToggle.onclick = () => {
 
@@ -116,6 +122,7 @@ import { getID } from "../../../data/js/authState.js";
                     uidToggle.classList.add('fa-eye');
                 }
             }
+            /* UID */
 
             const profilePicture = element.querySelector(`[data-account="profile-picture"]`);
             const profileUsername = element.querySelector(`[data-account="profile-username"]`);
@@ -125,48 +132,48 @@ import { getID } from "../../../data/js/authState.js";
             const editUsername = element.querySelector(`#edit-username`);
             const editAbout = element.querySelector(`#edit-about`);
             
-            const editLinkGithub = element.querySelector(`[data-social="github"]`);
-            const linkGithub = element.querySelector(`#github-social`);
+            const editLinkInstagram = element.querySelector(`[data-social="instagram"]`);
+            const linkInstagram = element.querySelector(`#instagram-social`);
 
-            const editLinkYoutube = element.querySelector(`[data-social="youtube"]`);
-            const linkYoutube = element.querySelector(`#youtube-social`);
-            
-            const editLinkTwitter = element.querySelector(`[data-social="twitter"]`);
-            const linkTwitter = element.querySelector(`#twitter-social`);
+            const editLinkWebsite = element.querySelector(`[data-social="website"]`);
+            const linkWebsite = element.querySelector(`#website-social`);
 
-            editLinkGithub.onclick = () => popup.prompt({
-                msg: 'Instagram Username<br>Ex: devanka761',
+            const editLinkTikTok = element.querySelector(`[data-social="tiktok"]`);
+            const linkTikTok = element.querySelector(`#tiktok-social`);
+
+            editLinkInstagram.onclick = () => popup.prompt({
+                msg: 'Instagram Username<br>Ex: Username',
                 max: 20,
                 onyes: (res) => {
                     update(ref(db, 'users/' + currentID), {
-                        github: res
+                        instagram: res
                     });
-                    popup.alert(`${lang.other_user} <a target="_blank" href="https://instagram.com/${res}">${lang.your_github}</a> Account`);
-                    linkGithub.innerText = res;
+                    popup.alert(`${lang.other_user} <a target="_blank" href="https://instagram.com/${res}">${lang.your_instagram}</a> Account`);
+                    linkInstagram.innerText = res.length > 10 ? res.substring(0, 10) + '...' : res;
                 }
             });
             
-            editLinkYoutube.onclick = () => popup.prompt({
-                msg: 'Youtube ID<br>Ex: UC6DRs2WBcTosEKqLUbgu5xA',
+            editLinkWebsite.onclick = () => popup.prompt({
+                msg: 'Link Website<br>Ex: https://www.yourlink.com/',
                 max: 50,
                 onyes: (res) => {
                     update(ref(db, 'users/' + currentID), {
-                        youtube: res
+                        website: res
                     });
-                    popup.alert(`${lang.other_user} <a target="_blank" href="https://www.youtube.com/channel/${res}">${lang.your_youtube}</a>`);
-                    linkYoutube.innerText = 'Linked';
+                    popup.alert(`${lang.other_user} <a target="_blank" href="${res}">${lang.your_website}</a>`);
+                    linkWebsite.innerText = 'Linked';
                 }
             });
 
-            editLinkTwitter.onclick = () => popup.prompt({
-                msg: 'Twitter Username<br>Ex: Username',
+            editLinkTikTok.onclick = () => popup.prompt({
+                msg: 'TikTok Username<br>Ex: Username',
                 max: 20,
                 onyes: (res) => {
                     update(ref(db, 'users/' + currentID), {
-                        twitter: res
+                        tiktok: res
                     });
-                    popup.alert(`${lang.other_user} <a target="_blank" href="https://twitter.com/${res}">${lang.your_twtiter}</a>`);
-                    linkTwitter.innerText = res;
+                    popup.alert(`${lang.other_user} <a target="_blank" href="https://www.tiktok.com/@${res}">${lang.your_tiktok}</a> Account`);
+                    linkTikTok.innerText = res.length > 10 ? res.substring(0, 10) + '...' : res;
                 }
             });
             
@@ -180,9 +187,9 @@ import { getID } from "../../../data/js/authState.js";
 
                 s.about ? profileAbout.innerText = s.about : profileAbout.innerHTML = `<i>${lang.hey_there}</i>`;
 
-                s.github ? linkGithub.innerText = s.github : linkGithub.innerText = lang.not_linked;
-                s.youtube ? linkYoutube.innerText = lang.linked : linkYoutube.innerText = lang.not_linked;
-                s.twitter ? linkTwitter.innerText = s.twitter : linkTwitter.innerText = lang.not_linked;
+                s.instagram ? linkInstagram.innerText = s.instagram : linkInstagram.innerText = lang.not_linked;
+                s.website ? linkWebsite.innerText = lang.linked : linkWebsite.innerText = lang.not_linked;
+                s.tiktok ? linkTikTok.innerText = s.tiktok : linkTikTok.innerText = lang.not_linked;
 
                 editUsername.onclick = () => popup.prompt({
                     msg: lang.new_username,
