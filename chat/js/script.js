@@ -163,11 +163,11 @@ import { getID } from "../../data/js/authState.js";
                 </div>
             `);
             
-            element.querySelector(`#back-dashboard`).onclick = () => window.location.href = `${window.location.origin}/dashboard/`;
+            element.querySelector(`#back-dashboard`).onclick = () => window.history.go(-1);
 
             element.querySelector(`#info-chat`).onclick = () => popup.alert({
                 msg: `${lang.markdown}:<br/><b>Bold</b> <i class="fa-light fa-angles-right"></i> *Bold*<br/><i>Italic</i> <i class="fa-light fa-angles-right"></i> _Italic_`,
-                type: 'info'
+                type: 'infjo'
             });
 
             const uname = element.querySelector(`#people-username`);

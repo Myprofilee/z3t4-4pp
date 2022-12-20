@@ -137,23 +137,23 @@ import { getID } from "../../../data/js/authState.js";
                 if(s.instagram) {
                     const sc = document.createElement('button');
                     sc.classList.add('action');
-                    sc.innerHTML = `<i class="fa-brands fa-github c-white"></i> GitHub`;
-                    sc.onclick = () => window.open(`https://www.instagram.com/${s.instagram}`);
+                    sc.innerHTML = `<i class="fa-brands fa-instagram" style="color:white;"></i> Instagram`;
+                    sc.onclick = () => swingWebViewPlugin.app.methods.doExternalOpen(`https://www.instagram.com/${s.instagram}`);
                     uLink.append(sc);
                 }
                 if(s.website) {
                     const sc = document.createElement('button');
                     sc.classList.add('action');
-                    sc.innerHTML = `<i class="fa-brands fa-youtube c-red"></i> Youtube`;
-                    sc.onclick = () => window.open(`${s.website}`);
+                    sc.innerHTML = `<i class="fa-light fa-globe" style="color:white;"></i> Website`;
+                    sc.onclick = () => swingWebViewPlugin.app.methods.doExternalOpen(`${s.website}`);
                     uLink.append(sc);
                 }
                 
                 if(s.tiktok) {
                     const sc = document.createElement('button');
                     sc.classList.add('action');
-                    sc.innerHTML = `<i class="fa-brands fa-twitter c-blue"></i> TikTok`;
-                    sc.onclick = () => window.open(`https://www.tiktok.com/${s.tiktok}`);
+                    sc.innerHTML = `<i class="fa-brands fa-tiktok" style="color:white;"></i> TikTok`;
+                    sc.onclick = () => swingWebViewPlugin.app.methods.doExternalOpen(`https://www.tiktok.com/@${s.tiktok}`);
                     uLink.append(sc);
                 }
             }
